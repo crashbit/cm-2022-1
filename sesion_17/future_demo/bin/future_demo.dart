@@ -1,4 +1,6 @@
 void main() {
+  var res;
+
   print("Antes del future");
 
   final myFuture = Future<int>.delayed(
@@ -6,7 +8,7 @@ void main() {
     () => 42,
   )
       .then(
-        (valor) => print("Este es el valor: $valor"),
+        (valor) => res = valor,
       )
       .catchError(
         (onError) => print("Error : $onError"),
@@ -15,5 +17,6 @@ void main() {
         () => print("Future completado"),
       );
 
+  print("Es es el valor: $res");
   print("Despues del future");
 }
